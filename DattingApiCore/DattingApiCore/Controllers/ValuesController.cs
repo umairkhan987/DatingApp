@@ -23,6 +23,7 @@ namespace DattingApiCore.Controllers
         }
 
         // GET: api/Values
+        [AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> GetValues()
         {
