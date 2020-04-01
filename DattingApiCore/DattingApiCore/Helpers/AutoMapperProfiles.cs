@@ -20,6 +20,8 @@ namespace DattingApiCore.Helpers
                 .ForMember(dest => dest.Age, opt => opt.MapFrom(src => src.DateOfBirth.CalculateAge()));
             CreateMap<Photo, PhotosForDetailedDto>();
             CreateMap<UserUpdateDto, User>();
+            CreateMap<Photo, PhotoFromReturnDto>();
+            CreateMap<PhotoForCreationDto, Photo>();
         }
 
     }

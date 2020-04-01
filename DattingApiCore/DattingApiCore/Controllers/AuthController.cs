@@ -5,6 +5,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using AutoMapper;
 using DattingApiCore.Data;
 using DattingApiCore.Dtos;
 using DattingApiCore.Models;
@@ -21,11 +22,13 @@ namespace DattingApiCore.Controllers
     {
         private readonly IAuthRepository _repo;
         private readonly IConfiguration config;
+        private readonly IMapper mapper;
 
-        public AuthController(IAuthRepository repo, IConfiguration config)
+        public AuthController(IAuthRepository repo, IConfiguration config,IMapper mapper)
         {
             this._repo = repo;
             this.config = config;
+            this.mapper = mapper;
         }
 
         [HttpPost("register")]
@@ -80,8 +83,11 @@ namespace DattingApiCore.Controllers
 
             var token = tokenHandler.CreateToken(tokenDescriptor);
 
+            var user = mapper.Map<UserForListDto>(userForRepo);
+
             return Ok(new { 
-                    token=tokenHandler.WriteToken(token)
+                    token=tokenHandler.WriteToken(token),
+                    user
             });
             
         }
