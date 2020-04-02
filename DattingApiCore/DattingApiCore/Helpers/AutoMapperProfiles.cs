@@ -22,6 +22,7 @@ namespace DattingApiCore.Helpers
             CreateMap<UserUpdateDto, User>();
             CreateMap<Photo, PhotoFromReturnDto>();
             CreateMap<PhotoForCreationDto, Photo>();
+            CreateMap<UserForRegisterDto, User>();
         }
 
     }

@@ -43,14 +43,13 @@ namespace DattingApiCore.Controllers
                 return BadRequest("Username aleardy exists.");
             }
 
-            var userToCreate = new User
-            {
-                Username= userForRegisterDto.Username,
-            };
+            var userToCreate = mapper.Map<User>(userForRegisterDto);
 
             var userCreated = await _repo.Register(userToCreate, userForRegisterDto.Password);
 
-            return StatusCode(201);
+            var userToReturn = mapper.Map<UserForDetailDto>(userCreated);
+
+            return CreatedAtRoute("GetUser", new { controller= "Users", id= userCreated.Id }, userToReturn);
         }
 
         [HttpPost("login")]
