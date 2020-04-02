@@ -6,15 +6,18 @@ using System.Threading.Tasks;
 using AutoMapper;
 using DattingApiCore.Data;
 using DattingApiCore.Dtos;
+using DattingApiCore.Helpers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DattingApiCore.Controllers
 {
+
     [Authorize]
     [Route("api/[controller]")]
     [ApiController]
+    [ServiceFilter(typeof(LogUserActivity))]
     public class UsersController : ControllerBase
     {
         private readonly IDatingRepository repo;
