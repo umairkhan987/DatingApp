@@ -7,6 +7,8 @@
   <ItemGroup>
     <Compile Remove="Migrations\20200329155137_ExtendedUserClass.cs" />
     <Compile Remove="Migrations\20200329155137_ExtendedUserClass.Designer.cs" />
+    <Compile Remove="Migrations\20200404055542_createMessageTable.cs" />
+    <Compile Remove="Migrations\20200404055542_createMessageTable.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
